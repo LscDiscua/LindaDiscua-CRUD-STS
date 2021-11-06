@@ -1,0 +1,42 @@
+.estiloBienvenido{
+    color:darkmagenta;
+    text-decoration: none;
+    font-size: 50px;
+    font-family: 'Lucida Sans';
+    /* text-align: center; */
+
+}
+
+h2{
+    color:darkmagenta;
+    text-decoration: none;
+    font-size: 50px;
+    font-family: 'Lucida Sans';
+
+}
+
+.selectpicker{
+    width: 200px;
+    height: 30px;
+    background-color: #141414 !important;
+    border-style: solid;
+    border-left-width: 3px;
+    border-left-color: #00DDDD;
+    border-top: none;
+    border-bottom: none;
+    border-right: none;
+    color: white;
+    font-size: 18px;
+    font-weight: 200;
+    padding-left: 6px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+
+
+.credit-card-div  span { padding-top:10px; }
+.credit-card-div img { padding-top:30px; }
+.credit-card-div .small-font { font-size:9px; }
+.credit-card-div .pad-adjust { padding-top:10px; }

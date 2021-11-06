@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="/bootstrap/bootstrap.min.css">
+    <link href="/css/singin.css">
+    <link href="/css/estilo.css">
+    <!-- <link rel='stylesheet' href='/stylesheets/style.css' /> -->
+    <link rel='stylesheet' href='css/headers.css'/>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>Agregar Alumno</title>
+  </head>
+  <body> 
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+      <ul class="nav nav-pills text-right">
+        <li class="nav-item"><a href="/" class="nav-link">Inicio</a></li>
+        <li class="nav-item"><a href="/listaAlumnos" class="nav-link">Lista Alumnos</a></li>
+        <li class="nav-item"><a href="/listaCarreras" class="nav-link" aria-current="page">Lista Carreras</a></li>
+        <li class="nav-item"><a href="/alumno" class="nav-link active" aria-current="page">Nuevo Alumno</a></li>
+        <li class="nav-item"><a href="/carrera" class="nav-link" aria-current="page">Nueva Carrera</a></li>
+      </ul>
+    </header>
+    <div class="container">
+      <h1 style=" color:cornflowerblue;  text-decoration: none; font-size: 50px;font-family: 'Lucida Sans';">Agregar Alumno</h1>
+      <hr>
+      <form action="/alumno" method="post">
+        <div class="panel panel-default"></div>
+            <div class="panel-heading">
+                <div class="row">
+                <div class="col-6">
+                  <label for="identidad">Identidad  </label>
+                  <input class="form-control" id="identidad" type="text" name="identidad" pattern="[0-9]{13}">
+
+                  <label for="nombreAlumno">Nombre Alumno</label>
+                  <input class="form-control" id="nombreAlumno" type="text" name="nombreAlumno">
+                 
+                  <label for="apellidoAlumno">Apellido Alumno</label>
+                  <input class="form-control" id="apellidoAlumno" type="text" name="apellidoAlumno">
+
+                  <label for="direccionAlumno">Direccion Alumno</label>
+                  <input class="form-control" id="direccionAlumno" type="text" name="direccionAlumno">
+
+                 
+                </div>
+                <div class="col-6">
+                  <label for="fechaNacimiento">Fecha Nacimiento</label>
+                  <input class="form-control" id="fechaNacimiento" type="text" name="fechaNacimiento">
+                  <% if(data.length > 0) {
+                    %>
+                    <div style="margin-top:10px">
+                      <p>Carreras</p>
+                      <select name="carrera" id="carrera" style="width: 400px; height: 50px;">
+                    <%
+                    for(var i = 0; i< data.length; i++)
+                    {
+                      %>
+                          <option name ="carrera" value="<%= data[i].idCarrera%>"><%= data[i].nombreCarrera%></option>
+                      <%
+                    }
+                      %>
+                    </select>
+                  </div>
+                    <%
+                    }
+                   else{
+
+                    %>
+                    <h2>No Existen Carreras para escoger aun</h2>
+                    <%
+
+                   }
+                    %>
+                    <div class="d-grip" style="margin-top: 10px;">
+                      <button class="btn" style="background-color:cornflowerblue; width: 400px; height: 50px;color: white;">Agregar</button>
+                    </div>
+                    <div class="d-grip gap-2" style="margin-top: 10px;">
+                      <a class="btn" style="background-color:darkblue; width: 400px; height: 50px;color: white;" href="/listaAlumnos">Listado</a>
+                    </div>
+                </div>
+                </div>
+      </form>
+    </div>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+<!-- doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="/bootstrap/bootstrap.min.css")
+        link(href ="/css/singin.css")
+        title AgregarAlumno
+    body 
+        .container.mt-3
+            h1 Agregar Alumno
+            hr
+            form(action="/alumno", method="post")
+                    .form-group 
+                        label(for="identidad") Identidad  
+                        input#identidad.form-control(type="text" name = "identidad") 
+                    .form-group.mt-3
+                        label(for = "nombreAlumno") Nombre Alumno
+                        input#nombreAlumno.form-control(type = "text" name = "nombreAlumno")
+                    .form-group.mt-3
+                        label(for = "apellidoAlumno") Apellido Alumno
+                        input#apellidoAlumno.form-control(type = "text" name = "apellidoAlumno")
+                .form-group.mt-3
+                    label(for = "direccionAlumno") Direccion Alumno
+                    input#direccionAlumno.form-control(type = "text" name = "direccionAlumno")
+                .form-group.mt-3
+                    label(for = "fechaNacimiento") Fecha Nacimiento
+                    input#fechaNacimiento.form-control(type = "text" name = "fechaNacimiento")
+                //- .form-group.mt-3
+                //-         select(name='select')
+                //-             option(value='value1') Value 1
+                //-             option(value='value2' selected='') Value 2
+                //-             option(value='value3') Value 3
+                .form-group.mt-3
+                    .d-grip.gap-2
+                        button.btn.btn-primary Agregar
+                    .d-grip.gap-2
+                        a.btn.btn-success(href="/listaCarreras") Listado -->

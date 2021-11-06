@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Lista Alumnos</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='css/headers.css'/>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+          <ul class="nav nav-pills text-right">
+            <li class="nav-item"><a href="/" class="nav-link">Inicio</a></li>
+            <li class="nav-item"><a href="/listaAlumnos" class="nav-link active">Lista Alumnos</a></li>
+            <li class="nav-item"><a href="/listaCarreras" class="nav-link" aria-current="page">Lista Carreras</a></li>
+            <li class="nav-item"><a href="/alumno" class="nav-link " aria-current="page">Nuevo Alumno</a></li>
+            <li class="nav-item"><a href="/carrera" class="nav-link" aria-current="page">Nueva Carrera</a></li>
+          </ul>
+        </header>
+    <div class="container">
+    <br>
+    <h1 style="color: cornflowerblue;">Lista de Alumnos</h1>
+    <table class="table" style="width: 100%">
+        <thead>
+            <tr>
+                <th scope="col">identidad</th>
+                <th scope="col">Nombre Alumno</th>
+                <th scope="col">Apellido Alumno</th>
+                <th width="200px">Direccion Alumno</th>
+                <th width="200px">Fecha Nacimiento</th>
+                <th width="200px">Carrera</th>
+                <th width="200px">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if(data.length > 0){
+                
+            for(var i = 0; i< data.length; i++) {
+                %>  
+            <tr>
+                <td><%= data[i].identidad%></td>
+                <td><%= data[i].nombreAlumno%></td>
+                <td><%= data[i].apellidoAlumno%></td>
+                <td><%= data[i].direccionAlumno%></td>
+                <td><%= data[i].fechaNacimiento%></td>
+                <%
+                    if(carreras.length > 0){
+                        for(var j = 0; j< carreras.length; j++) {
+                            if(carreras[j].idCarrera == data[i].carrera ){
+                                %>
+                                <td><%= carreras[j].nombreCarrera%></td>          
+                            <%  
+                            }
+                        }
+                    }
+                    else{
+                        %>
+                        <td><%= data[i].carrera%></td>
+                        <%
+                    }
+                %>
+                
+
+            <td>
+                <a class="btn btn-secondary edit" href="/editarAlumno/<%=data[i].identidad%>">Editar</a>                          
+                <a class="btn btn-danger delete" onclick="return alert('Are You sure?')" href="/eliminarAlumno/<%=data[i].identidad%>">Eliminar</a>                       
+            </td>
+        </tr>
+        <% }
+        }else{ %>
+            <tr>
+                <td colspan="3">Aun no se han agregado alumnos</td>
+            </tr>
+        <% } %>     
+       
+        </tbody>
+    </table>
+        <a class="btn" style="text-decoration: none;background-color:cornflowerblue;width: 200px;color: white;" href="/alumno">Nuevo Alumno</a>
+</div>
+</body>
+</html>
